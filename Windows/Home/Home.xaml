@@ -1,0 +1,21 @@
+﻿<Window x:Class="LearningUserControl.Windows.Home.Home"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:control="clr-namespace:LearningUserControl.UserControls"
+        xmlns:local="clr-namespace:LearningUserControl.Windows.Home"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        Title="Home"
+        Height="450"
+        Width="400">
+    <StackPanel Orientation="Horizontal">
+        <control:CustomComboBoxControl x:Name="cbAvatar"
+                                       SelectColor="Red"
+                                       CustomSelectBox_SelectionChanged="cbAvatar_SelectionChanged"
+                                       Margin="0 0 20 0"></control:CustomComboBoxControl>
+        <control:CustomConboBoxImageControl x:Name="cbImage"
+                                            Width="120"></control:CustomConboBoxImageControl>
+    </StackPanel>
+</Window>

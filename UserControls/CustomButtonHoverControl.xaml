@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="LearningUserControl.UserControls.CustomButtonHoverControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             x:Name="ButtonCustomHover"
+             xmlns:local="clr-namespace:LearningUserControl.UserControls"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}"
+               x:Key="CustomButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Border"
+                                Width="{TemplateBinding Width}"
+                                Background="{Binding ButtonBackground,ElementName=ButtonCustomHover, FallbackValue='Transparent'}"
+                                Height="40">
+                            <Grid VerticalAlignment="Center"
+                                  HorizontalAlignment="Center"
+                                  Height="25">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="4*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding ButtonImage, ElementName=ButtonCustomHover, FallbackValue='/Resource/Images/2788935.png'}"
+                                       Grid.Column="0" />
+                                <Label Content="{TemplateBinding Content}"
+                                       FontSize="12"
+                                       Foreground="#2c2e30"
+                                       Grid.Column="1"></Label>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="Border"
+                                        Property="Background"
+                                        Value="{Binding ButtonHoverBackground, ElementName=ButtonCustomHover, FallbackValue='LightGray'}" />
+                            </Trigger>
+                            <DataTrigger Binding="{Binding Path=IsSelected}"
+                                         Value="True">
+                                <Setter Property="Background"
+                                        Value="Black" />
+                            </DataTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Button  x:Name="btnCustom"
+             Style="{StaticResource CustomButton}"
+             Click="btnCustom_Click"
+             MouseLeave="btnCustom_MouseLeave"
+             Width="120"
+             Content="{Binding ButtonContent, ElementName=ButtonCustomHover,FallbackValue='Button'}">
+    </Button>
+</UserControl>

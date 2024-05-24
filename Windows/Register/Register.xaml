@@ -1,0 +1,251 @@
+﻿<Window x:Class="LearningUserControl.Windows.Register.Register"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LearningUserControl.Windows.Register"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:control="clr-namespace:LearningUserControl.UserControls"
+        xmlns:commons="clr-namespace:AUC_A_Commons_T1;assembly=AUC_A_Commons_T1"
+        mc:Ignorable="d"
+        x:Name="registerWindow"
+        Height="400"
+        Width="350"
+        Background="Transparent"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        Loaded="registerWindow_Loaded"
+        Title="Login">
+    <Window.Resources>
+
+        <Style TargetType="Label"
+               x:Key="LabelCustom">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver"
+                         Value="TRue">
+                    <Setter Property="Opacity"
+                            Value="0.5" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="ToggleButton"
+               x:Key="ToggleButtonCustom">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <StackPanel Orientation="Horizontal">
+                            <Border x:Name="Border"
+                                    Background="Transparent"
+                                    CornerRadius="3"
+                                    BorderThickness="1"
+                                    Width="18"
+                                    Height="18"
+                                    BorderBrush="Black">
+                                <materialDesign:PackIcon Kind="CheckBold"
+                                                         Visibility="Collapsed"
+                                                         x:Name="Icon"
+                                                         Background="Transparent"
+                                                         Foreground="Black"
+                                                         BorderBrush="{x:Null}"
+                                                         BorderThickness="0 " />
+                            </Border>
+                            <Label Content="Lưu đăng nhập"
+                                   Padding="0"
+                                   Margin="5 0 0 0"
+                                   Height="20"
+                                   VerticalAlignment="Center" />
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked"
+                                     Value="True">
+                                <Setter  TargetName="Icon"
+                                         Value="Visible"
+                                         Property="Visibility" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+
+        <Border  CornerRadius="20">
+            <Border.Background>
+                <ImageBrush ImageSource="/Resource/Images/music2.jpg" />
+            </Border.Background>
+            <Border CornerRadius="20"
+                    Opacity="0.95"
+                    BorderThickness="5">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="1,1">
+                        <GradientStop Color="Gray"
+                                      Offset="0.2" />
+                        <GradientStop Color="LightGray"
+                                      Offset="0.8" />
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.BorderBrush>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="1,1">
+                        <GradientStop Color="DarkRed"
+                                      Offset="0" />
+                        <GradientStop Color="Red"
+                                      Offset="0.5" />
+                        <GradientStop Color="HotPink"
+                                      Offset="1" />
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <!--header-->
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="25" />
+                            <ColumnDefinition Width="5" />
+                            <ColumnDefinition Width="25" />
+                            <ColumnDefinition Width="10" />
+                        </Grid.ColumnDefinitions>
+                        <Label Content="REGISTER"
+                               Grid.Column="0"
+                               Foreground="#ffffff"
+                               Margin="10 0 0 0"
+                               FontWeight="DemiBold"
+                               FontSize="16"></Label>
+                        <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                                Grid.Column="3"
+                                Height="20"
+                                Width="20"
+                                Click="Button_Click_1"
+                                Background="Red"
+                                BorderThickness="0"
+                                BorderBrush="{x:Null}">
+                            <materialDesign:PackIcon Kind="CloseThick" />
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                                Grid.Column="1"
+                                Height="20"
+                                Width="20"
+                                Background="GreenYellow"
+                                Click="Button_Click"
+                                BorderThickness="0"
+                                BorderBrush="{x:Null}">
+                            <materialDesign:PackIcon Kind="Minus" />
+                        </Button>
+                    </Grid>
+                    <!--body-->
+                    <Grid Grid.Row="1">
+                        <StackPanel Width="300"
+                                    Orientation="Vertical">
+                            <!--Logo-->
+
+                            <Label Content="Đăng ký tài khoản"
+                                   FontWeight="Bold"
+                                   Margin="0 20 0 0"
+                                   FontSize="24"
+                                   HorizontalAlignment="Center"
+                                   FontFamily="Great Vibes" />
+
+                            <!--Input Element-->
+
+                            <!--Register Form-->
+                            <StackPanel x:Name="registerForm"
+                                        Width="280"
+                                        Visibility="Visible"
+                                        Orientation="Vertical"
+                                        Margin="0 20 0 0">
+
+                                <commons:CustomInputLineControl x:Name="txtUserName1"
+                                                                Grid.Row="1"
+                                                                TextBoxFontSize="14"
+                                                                TextBoxFontFamily="Arial"
+                                                                BorderFocusColor="Black"
+                                                                BorderUnfocusColor="#454443"
+                                                                TextFocusColor="Black"
+                                                                TextUnfocusColor="#454443"
+                                                                TextBoxContent="Enter your UserName"
+                                                                TextBoxTitle="UserName3"
+                                                                ImagePath="/resource/icons/person.png"
+                                                                HeightValueImage="18"
+                                                                WidthValueImage="18"
+                                                                TextBoxPlaceHolder="Enter your UserName">
+                                </commons:CustomInputLineControl>
+                                <commons:CustomInputLineControl x:Name="txtUserName2"
+                                                                Grid.Row="1"
+                                                                TextBoxFontSize="14"
+                                                                TextBoxFontFamily="Arial"
+                                                                BorderFocusColor="Black"
+                                                                BorderUnfocusColor="#454443"
+                                                                TextFocusColor="Black"
+                                                                TextUnfocusColor="#454443"
+                                                                TextBoxContent="Enter your Email"
+                                                                TextBoxTitle="UserName3"
+                                                                ImagePath="/resource/icons/mail.png"
+                                                                HeightValueImage="18"
+                                                                WidthValueImage="25"
+                                                                TextBoxPlaceHolder="Enter your Email">
+                                </commons:CustomInputLineControl>
+                                <commons:CustomPasswordLineImageControl x:Name="txtPassword5"
+                                                                        Grid.Row="2"
+                                                                        TextBoxFontSize="14"
+                                                                        LabelFontSize="12"
+                                                                        TextBoxFontFamily="Arial"
+                                                                        BorderFocusColor="Black"
+                                                                        BorderUnfocusColor="#454443"
+                                                                        TextFocusColor="Black"
+                                                                        TextUnfocusColor="#454443"
+                                                                        TextBoxTitle="Password"
+                                                                        TextBoxPlaceHolder="Enter your password">
+                                </commons:CustomPasswordLineImageControl>
+                                <commons:CustomPasswordLineImageControl x:Name="txtPassword6"
+                                                                        Grid.Row="2"
+                                                                        TextBoxFontSize="14"
+                                                                        LabelFontSize="12"
+                                                                        TextBoxFontFamily="Arial"
+                                                                        BorderFocusColor="Black"
+                                                                        BorderUnfocusColor="#454443"
+                                                                        TextFocusColor="Black"
+                                                                        TextUnfocusColor="#454443"
+                                                                        TextBoxTitle="Password"
+                                                                        TextBoxPlaceHolder="Comfirm your password">
+                                </commons:CustomPasswordLineImageControl>
+                                <Grid Width="124"
+                                      Margin="0 15 0 0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="6*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Button Margin="2,0"
+                                            Grid.Column="0"
+                                            materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                                            materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                                            materialDesign:ButtonProgressAssist.Value="-1"
+                                            Content="Đăng Ký"
+                                            Click="btnRegister_Click"
+                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                            Style="{StaticResource MaterialDesignRaisedButton}" />
+                                    <control:SpinnerLoadControl Grid.Column="1"
+                                                                RoundColor="Black"
+                                                                Visibility="Collapsed"
+                                                                DonutRadius="10"
+                                                                DonutThick="3"
+                                                                VerticalAlignment="Center"
+                                                                RoundSpeed="0.5"
+                                                                x:Name="spinner"></control:SpinnerLoadControl>
+                                </Grid>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Border>
+    </Grid>
+</Window>

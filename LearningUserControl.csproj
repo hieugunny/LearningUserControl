@@ -1,0 +1,101 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resource\Icons\align_horizontal_left.png" />
+    <None Remove="Resource\Icons\call-icon.png" />
+    <None Remove="Resource\Icons\company-icon2.png" />
+    <None Remove="Resource\Icons\down-arrow.png" />
+    <None Remove="Resource\Icons\facebook_default.png" />
+    <None Remove="Resource\Icons\facebook_hover.png" />
+    <None Remove="Resource\Icons\lock.png" />
+    <None Remove="Resource\Icons\mail.png" />
+    <None Remove="Resource\Icons\notifications.png" />
+    <None Remove="Resource\Icons\person.png" />
+    <None Remove="Resource\Icons\search.png" />
+    <None Remove="Resource\Icons\setting2.png" />
+    <None Remove="Resource\Icons\store.png" />
+    <None Remove="Resource\Icons\visibility.png" />
+    <None Remove="Resource\Icons\visibility_off.png" />
+    <None Remove="Resource\Images\2788935.png" />
+    <None Remove="Resource\Images\40626_preview_rev_1.png" />
+    <None Remove="Resource\Images\bell.png" />
+    <None Remove="Resource\Images\logo3332.png" />
+    <None Remove="Resource\Images\logologin.png" />
+    <None Remove="Resource\Images\moutainphoto.jpg" />
+    <None Remove="Resource\Images\music.jpg" />
+    <None Remove="Resource\Images\music2.jpg" />
+    <None Remove="Resource\Images\Remove-bg.ai_1716370087402.png" />
+    <None Remove="Resource\Images\WIN_20240524_01_06_00_Pro.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resource\Icons\align_horizontal_left.png" />
+    <Resource Include="Resource\Icons\call-icon.png" />
+    <Resource Include="Resource\Icons\company-icon2.png" />
+    <Resource Include="Resource\Icons\down-arrow.png" />
+    <Resource Include="Resource\Icons\facebook_default.png" />
+    <Resource Include="Resource\Icons\facebook_hover.png" />
+    <Resource Include="Resource\Icons\lock.png" />
+    <Resource Include="Resource\Icons\mail.png" />
+    <Resource Include="Resource\Icons\notifications.png" />
+    <Resource Include="Resource\Icons\person.png" />
+    <Resource Include="Resource\Icons\search.png" />
+    <Resource Include="Resource\Icons\setting2.png" />
+    <Resource Include="Resource\Icons\store.png" />
+    <Resource Include="Resource\Icons\visibility.png" />
+    <Resource Include="Resource\Icons\visibility_off.png" />
+    <Resource Include="Resource\Images\2788935.png" />
+    <Resource Include="Resource\Images\40626_preview_rev_1.png" />
+    <Resource Include="Resource\Images\bell.png" />
+    <Resource Include="Resource\Images\logo3332.png" />
+    <Resource Include="Resource\Images\logologin.png" />
+    <Resource Include="Resource\Images\moutainphoto.jpg" />
+    <Resource Include="Resource\Images\music.jpg" />
+    <Resource Include="Resource\Images\music2.jpg" />
+    <Resource Include="Resource\Images\Remove-bg.ai_1716370087402.png" />
+    <Resource Include="Resource\Images\WIN_20240524_01_06_00_Pro.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="AUC_A_Commons_T1">
+      <HintPath>..\Test\dll\AUC_A_Commons_T1.dll</HintPath>
+    </Reference>
+    <Reference Include="AUC_A_Login_T2">
+      <HintPath>..\AUC_A_Login_T2\bin\Debug\AUC_A_Login_T2.dll</HintPath>
+    </Reference>
+    <Reference Include="WpfControlLibrary1">
+      <HintPath>dll\WpfControlLibrary1.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="UserControls\CustomPasswordTitleControl5.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\CustomPasswordTitleControl4.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\CustomToggleSwitch6.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\CustomToggleSwitch8.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\CustomToggleSwitchv4.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+</Project>

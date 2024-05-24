@@ -1,0 +1,38 @@
+﻿<Window x:Class="LearningUserControl.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:LearningUserControl.UserControls"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Loaded="Window_Loaded"
+        Height="390"
+        Width="350"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        xmlns:commons2="clr-namespace:AUC_A_Login_T2;assembly=AUC_A_Login_T2"
+        xmlns:commons3="clr-namespace:WpfControlLibrary1;assembly=WpfControlLibrary1">
+    <Grid>
+
+        <commons2:LoginControl x:Name="ucLogin"
+                               CustomButtonClose_Click="LoginControl_CustomButtonClose_Click"
+                               TitleHeaderContent="Đăng nhập"
+                               TitleHeaderFontFamily="Arial"
+                               TitleHeaderForegoud="DimGray"
+                               TitleHeaderFontSize="20"
+                               LogoHeight="80"
+                               LogoWidth="80"
+                               ImageLogo="resource/images/Remove-bg.ai_1716370087402.png"
+                               CustomButtonResendOTP_Clicked="ucLogin_CustomButtonResendOTP_Clicked"
+                               CustomButtonNext1_Clicked="LoginControl_CustomButtonNext1_Clicked"
+                               CustomButtonNext2_Clicked="LoginControl_CustomButtonNext2_Clicked"
+                               CustomButtonNext3_Clicked="LoginControl_CustomButtonNext3_Clicked"
+                               CustomButtonMinimizedWindow_Click="LoginControl_CustomButtonMinimizedWindow_Click">
+        </commons2:LoginControl>
+    </Grid>
+</Window>

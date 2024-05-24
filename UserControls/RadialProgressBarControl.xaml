@@ -1,0 +1,100 @@
+﻿<UserControl x:Class="LearningUserControl.UserControls.RadialProgressBarControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:LearningUserControl.UserControls"
+             Loaded="UserControl_Loaded"
+             x:Name="ProgressRadial"
+             mc:Ignorable="d"     d:DesignHeight="250"
+             d:DesignWidth="250">
+    <UserControl.Resources>
+
+        <Storyboard x:Key="ProgressBarAnimation"
+                    TargetName="arc">
+            <PointAnimationUsingPath
+                Storyboard.TargetProperty="Point"
+                                     Duration="0:0:20">
+                <PointAnimationUsingPath.PathGeometry>
+                    <PathGeometry Figures="M 0 -100
+                                  A 100,100 0 0 1 0 100
+                                  A 100,100 0 0 1 0 -100" />
+                </PointAnimationUsingPath.PathGeometry>
+            </PointAnimationUsingPath>
+
+            <BooleanAnimationUsingKeyFrames
+                Storyboard.TargetProperty="IsLargeArc"
+                Duration="0:0:20">
+                <DiscreteBooleanKeyFrame KeyTime="0:0:0"
+                                         Value="False" />
+                <DiscreteBooleanKeyFrame KeyTime="0:0:10"
+                                         Value="True" />
+            </BooleanAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <Grid>
+        <Canvas HorizontalAlignment="Center" VerticalAlignment="Center">
+            <!--Sub progress-->
+            <Path Stroke="LightGray" StrokeThickness="10"
+                  Data="M 0 -100
+                                  A 100,100 0 0 1 0 100
+                                  A 100,100 0 0 1 0 -100" />
+            <!--progress bar-->
+            <Path x:Name="progressPath"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+
+                  Fill="Transparent"
+                  Stroke="{Binding ProgressBarColor, ElementName=ProgressRadial, FallbackValue='yellow'}"
+                  StrokeThickness="20"
+                  StrokeStartLineCap="Flat"
+                  StrokeEndLineCap="Flat"
+                  StrokeLineJoin="Round">
+                <!--Stroke-->
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure StartPoint="0 -100"
+                                    IsClosed="False">
+                            <!--<LineSegment Point="0 -100" />-->
+                            <ArcSegment x:Name="arc"
+                                        Size="100 100"
+                                        IsLargeArc="True"
+                                        SweepDirection="Clockwise" />
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+                <!--Blur-->
+                <Path.Effect>
+                    <DropShadowEffect
+                        BlurRadius="50"
+                        ShadowDepth="2"
+                        Direction="-90"
+                        Color="{Binding ProgressBarColor, ElementName=ProgressRadial, FallbackValue='yellow'}" />
+                </Path.Effect>
+            </Path>
+        </Canvas>
+        <Label x:Name="lbPercen" Content="0 %"
+               FontFamily="{Binding PercentLabelFontFamily, ElementName=ProgressRadial, FallbackValue='Arial'}"
+               FontSize="{Binding PercentLabelFontsize, ElementName=ProgressRadial, FallbackValue='42'}"
+               Foreground="{Binding PercentLabelForeGround, ElementName=ProgressRadial, FallbackValue='Black'}"
+               Margin="{Binding PercentLabelThickness, ElementName=ProgressRadial, FallbackValue='0 70 0 0'}"
+               Padding="0 0 0 0"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center">
+        </Label>
+        <Label  Content="percent" Foreground="LightYellow"
+               FontSize="35" HorizontalAlignment="Center" Visibility="Collapsed"
+               VerticalAlignment="Top" Margin="0,100,0,0">
+            <Label.Effect>
+                <DropShadowEffect
+                    BlurRadius="50"
+                    ShadowDepth="1"
+                    Direction="-90" />
+            </Label.Effect>
+        </Label>
+        <Image Source="/resource/icons/facebook_hover.png"
+               Height="{Binding ImageHeight, ElementName=ProgressRadial, FallbackValue=50}"
+               Width="{Binding ImageWidth, ElementName=ProgressRadial, FallbackValue=50}"
+               Margin="{Binding ImageMargin, ElementName=ProgressRadial, FallbackValue='0 0 0 45'}"
+               VerticalAlignment="Center" HorizontalAlignment="Center"></Image>
+    </Grid>
+</UserControl>

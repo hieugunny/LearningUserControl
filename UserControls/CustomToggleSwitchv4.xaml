@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="LearningUserControl.UserControls.CustomToggleSwitch4"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:LearningUserControl.UserControls"
+             mc:Ignorable="d"
+             Loaded="CheckBoxCustomv4_Loaded"
+             x:Name="CheckBoxCustomv3">
+    <UserControl.Resources>
+        <!--color-->
+        <!--background color-->
+        <SolidColorBrush x:Key="PrimaryBackgroundColor" Color="#496fff" />
+        <SolidColorBrush x:Key="SecondaryBackgroundColor" Color="#ffffff" />
+
+        <!--primary color-->
+        <SolidColorBrush x:Key="PrimaryBlueColor" Color="#263faa" />
+        <SolidColorBrush x:Key="PrimaryGrayColor" Color="#64677a" />
+        <SolidColorBrush x:Key="PrimaryBlackColor" Color="#000000" />
+        <SolidColorBrush x:Key="PrimaryWhiteColor" Color="#ffffff" />
+        <!--secondary color-->
+        <SolidColorBrush x:Key="SecondaryBlueColor" Color="LightBlue" />
+        <SolidColorBrush x:Key="SecondaryGrayColor" Color="#cecece" />
+
+        <!--tertiary color-->
+        <SolidColorBrush x:Key="TertiaryColor" Color="#c2d1fc" />
+
+        <Style x:Key="ToggleButtonStyle" TargetType="{x:Type ToggleButton}">
+            <Setter Property="Height" Value="20" />
+            <Setter Property="Width" Value="42" />
+            <Setter Property="MaxHeight" Value="20" />
+            <Setter Property="MaxWidth" Value="42" />
+
+            <Setter Property="Background" Value="#ffffff" />
+            <Setter Property="BorderBrush" Value="#000000" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Grid>
+                            <Border x:Name="Border"
+                                    Height="20" Width="42" CornerRadius="10" BorderThickness="2"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    Background="{TemplateBinding Background}" />
+                            <Border x:Name="Ellipse"
+                                       Height="14" Width="14"
+                                       Background="{TemplateBinding BorderBrush}"
+                                       CornerRadius="10"
+                                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                                       Margin="4 0 0 0" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <!--EventTrigger: Checked-->
+
+                            <EventTrigger RoutedEvent="Checked">
+
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!--Background-->
+                                        <ColorAnimation Storyboard.TargetName="Border"
+                                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                        To="#496fff" Duration="0:0:0.2" />
+
+                                        <!--BorderBrush-->
+                                        <ColorAnimation Storyboard.TargetName="Border"
+                                                        Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                                        To="#496fff" Duration="0:0:0.2" />
+                                        <!--Ellipse-->
+                                        <!--<ColorAnimation Storyboard.TargetName="Ellipse"
+                                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                        To="#ffffff" Duration="0:0:0.2" />-->
+                                        <ColorAnimation Storyboard.TargetName="Ellipse"
+                                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                        To="#ffffff" Duration="0:0:0.2" />
+                                        <!--Position-->
+                                        <ThicknessAnimation Storyboard.TargetName="Ellipse"
+                                                        Storyboard.TargetProperty="Margin"
+                                                        To="24 0 0 0" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <!--EventTrigger: Unchecked-->
+                            <EventTrigger RoutedEvent="Unchecked">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!--Background-->
+                                        <ColorAnimation Storyboard.TargetName="Border"
+                                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                        To="#ffffff" Duration="0:0:0.2" />
+                                        <!--BorderBrush-->
+                                        <ColorAnimation Storyboard.TargetName="Border"
+                                                        Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                                        To="#000000" Duration="0:0:0.2" />
+                                        <!--Ellipse-->
+                                        <ColorAnimation Storyboard.TargetName="Ellipse"
+                                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                        To="#000000" Duration="0:0:0.2" />
+                                        <!--Position-->
+                                        <ThicknessAnimation Storyboard.TargetName="Ellipse"
+                                                        Storyboard.TargetProperty="Margin"
+                                                        To="4 0 0 0" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <!--<Setter TargetName="Border" Property="Background" Value="{Binding CheckedBorderColor,ElementName=ToggleSwitch1Content, FallbackValue='Pink'}" />-->
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <CheckBox x:Name="cbCustom" Style="{StaticResource ToggleButtonStyle}"
+                          HorizontalAlignment="Center" VerticalAlignment="Center"
+                          Checked="cbCustom_Checked">
+    </CheckBox>
+</UserControl>

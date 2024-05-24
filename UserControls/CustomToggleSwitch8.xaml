@@ -1,0 +1,136 @@
+﻿<UserControl x:Class="LearningUserControl.UserControls.CustomToggleSwitch8"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:LearningUserControl.UserControls"
+             mc:Ignorable="d"
+             Loaded="CheckBoxCustomv2_Loaded"
+             x:Name="CheckBoxCustomv2">
+    <UserControl.Resources>
+        <!--color-->
+        <!--background color-->
+        <!--
+        <SolidColorBrush x:Key="PrimaryBackgroundColor" Color="#496fff" />
+        <SolidColorBrush x:Key="SecondaryBackgroundColor" Color="#ffffff" />
+
+        -->
+        <!--primary color-->
+        <!--
+        <SolidColorBrush x:Key="PrimaryBlueColor" Color="#263faa" />
+        <SolidColorBrush x:Key="PrimaryGrayColor" Color="#64677a" />
+        -->
+        <!--secondary color-->
+        <!--
+        <SolidColorBrush x:Key="SecondaryBlueColor" Color="LightBlue" />
+        <SolidColorBrush x:Key="SecondaryGrayColor" Color="#cecece" />
+
+        -->
+        <!--tertiary color-->
+
+        <!--<SolidColorBrush x:Key="TertiaryColor" Color="#c2d1fc" />-->
+
+        <Style x:Key="ToggleButtonStyle" TargetType="{x:Type ToggleButton}">
+            <Setter Property="Height" Value="20" />
+            <Setter Property="Width" Value="36" />
+            <Setter Property="MaxHeight" Value="20" />
+            <Setter Property="MaxWidth" Value="36" />
+            <Setter Property="Background" Value="#cecece" />
+            <Setter Property="BorderBrush" Value="#64677a" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Grid>
+                            <Border x:Name="tggBackground"
+                                    Height="20" Width="36" CornerRadius="3"
+                                    Background="{TemplateBinding Background}" />
+                            <Border x:Name="tggRectangle"
+                                       Height="16" Width="17"
+                                       Background="{TemplateBinding BorderBrush}"
+                                       CornerRadius="2"
+                                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                                       Margin="2 0 0 0" />
+                            <Label x:Name="lbLabel" Content="On" FontSize="10" Margin="22 3 0 0" Height="16" Padding="0 0 0 0"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+
+                            <!--EventTrigger: Checked-->
+
+                            <EventTrigger RoutedEvent="Checked">
+                                <BeginStoryboard>
+                                    <Storyboard>
+
+                                        <!--Background-->
+
+                                        <ColorAnimation Storyboard.TargetName="Border"
+                                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                        To="#496fff" Duration="0:0:0.2" />
+
+                                        <!--Rectangle-->
+
+                                        <ColorAnimation Storyboard.TargetName="Rectangle"
+                                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                        To="#263faa" Duration="0:0:0.2" />
+
+                                        <!--Position-->
+
+                                        <ThicknessAnimation Storyboard.TargetName="Rectangle"
+                                                        Storyboard.TargetProperty="Margin"
+                                                        To="17 0 0 0" Duration="0:0:0.2" />
+
+                                        <!--LabelCheckBox Position-->
+
+                                        <ThicknessAnimation Storyboard.TargetName="LabelCheckBox"
+                                                        Storyboard.TargetProperty="Margin"
+                                                        To="2 3 0 0" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+
+                            <!--EventTrigger: Unchecked-->
+
+                            <EventTrigger RoutedEvent="Unchecked">
+                                <BeginStoryboard>
+                                    <Storyboard>
+
+                                        <!--Background-->
+
+                                        <ColorAnimation Storyboard.TargetName="Border"
+                                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                        To="#cecece" Duration="0:0:0.2" />
+
+                                        <!--Rectangle-->
+
+                                        <ColorAnimation Storyboard.TargetName="Rectangle"
+                                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                        To="#64677a" Duration="0:0:0.2" />
+
+                                        <!--Position-->
+
+                                        <ThicknessAnimation Storyboard.TargetName="Rectangle"
+                                                        Storyboard.TargetProperty="Margin"
+                                                        To="2 0 0 0" Duration="0:0:0.2" />
+
+                                        <!--LabelCheckBox Position-->
+
+                                        <ThicknessAnimation Storyboard.TargetName="LabelCheckBox"
+                                                        Storyboard.TargetProperty="Margin"
+                                                        To="22 3 0 0" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+
+                            <!--Trigger: IsChecked - Change Label's Content when Checked-->
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <CheckBox x:Name="customCheckBox" Style="{StaticResource ToggleButtonStyle}"
+                          HorizontalAlignment="Center" VerticalAlignment="Center"
+                          IsChecked="{Binding CheckBoxIsCheck, ElementName=CheckBoxCustomv2, FallbackValue='False'}"
+                          Checked="customCheckBox_Checked">
+    </CheckBox>
+</UserControl>
